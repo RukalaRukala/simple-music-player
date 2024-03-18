@@ -1,2 +1,2 @@
-<app-song-list></app-song-list>
-<app-player></app-player>
+<app-song-list (selectedTrack)="player.src = $event"></app-song-list>
+<app-player #player></app-player>

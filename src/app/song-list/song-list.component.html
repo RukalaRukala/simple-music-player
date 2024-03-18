@@ -3,27 +3,26 @@
     <mat-toolbar color="primary">Simple music player</mat-toolbar>
   </div>
 
-  <mat-table #table [dataSource]="dataSource">
+  <ng-container *ngIf="dataSource$ | async as data">
+    <mat-table #table [dataSource]="data">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.id}} </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.name}} </mat-cell>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="author">
-      <mat-header-cell *matHeaderCellDef> Author</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef> Author</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.author}} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="play(row)"></mat-row>
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let song; columns: displayedColumns;" (click)="onPlay(song)" class="row"></mat-row>
+    </mat-table>
+  </ng-container>
 </div>
