@@ -1,0 +1,29 @@
+<div class="song-container mat-elevation-z8 container-width">
+  <div class="mat-title">
+    <mat-toolbar color="primary">Simple music player</mat-toolbar>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef> Author</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="play(row)"></mat-row>
+  </mat-table>
+</div>
