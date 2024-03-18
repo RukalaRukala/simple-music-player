@@ -6,6 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {SongListModule} from "./song-list/song-list.module";
+import {PlayerModule} from "./player/player.module";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {SongListModule} from "./song-list/song-list.module";
     MatIconModule,
     MatTableModule,
     SongListModule,
+    PlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
